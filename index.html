@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Cuenta regresiva</title>
+	<link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
+	<style>
+		body {
+			background-image: url('./fondo.jpg');
+			background-size: cover;
+			background-position: center;
+			font-family: 'Poppins', sans-serif;
+		}
+
+		.countdown-container {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			height: 100vh;
+			color: white;
+			font-size: 3rem;
+			text-shadow: 2px 2px black;
+		}
+	</style>
+	<script>
+		// Establecer la fecha de finalización de la cuenta regresiva (25 de abril a las 00:00:00)
+		var countDownDate = new Date("Apr 25, 2023 00:00:00").getTime();
+
+		// Actualizar la cuenta regresiva cada segundo
+		var x = setInterval(function() {
+
+		  // Obtener la fecha y hora actual
+		  var now = new Date().getTime();
+
+		  // Calcular la distancia entre la fecha y hora actual y la fecha y hora de finalización
+		  var distance = countDownDate - now;
+
+		  // Cálculos de tiempo para días, horas, minutos y segundos
+		  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+		  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+		  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+		  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+		  // Mostrar la cuenta regresiva en un elemento HTML con el id="countdown"
+		  document.getElementById("countdown").innerHTML = days + "d " + hours + "h "
+		  + minutes + "m " + seconds + "s ";
+
+		  // Si la cuenta regresiva finaliza, mostrar un mensaje de finalización
+		  if (distance < 0) {
+		    clearInterval(x);
+		    document.getElementById("countdown").innerHTML = "EXPIRED";
+		  }
+		}, 1000);
+	</script>
+</head>
+<body>
+
+	<div class="countdown-container">
+		<h1><p id="countdown"></p></h1>
+	</div>
+
+</body>
+</html>
